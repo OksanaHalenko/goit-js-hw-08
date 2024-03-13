@@ -1,0 +1,31 @@
+body {
+  background-color: #fff;
+}
+ul {
+  padding: 24px 156px;
+  list-style-type: none;
+}
+a {
+  cursor: pointer;
+}
+.gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  flex-basis: calc((100% - 24px * 2) / 3);
+}
+.gallery-image {
+  width: 360px;
+  height: 200px;
+}
+.gallery-link:hover img,
+.gallery-link:focus img {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
