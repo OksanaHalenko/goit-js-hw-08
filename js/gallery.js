@@ -69,7 +69,7 @@ function createGallery(arr) {
     return arr
         .map(({ preview, original, description }) => 
             `<li class="gallery-item">
-                <a class="gallery-link" href="${preview}">
+                <a class="gallery-link" href="${preview}" >
                    <img
                      class = "gallery-image"
                      src = "${preview}"
@@ -81,3 +81,23 @@ function createGallery(arr) {
         .join("");
 }
 gallery.insertAdjacentHTML("beforeend", createGallery(images));
+
+gallery.addEventListener("click", openModalWindow);
+
+function openModalWindow(event) {
+    event.preventDefault();
+    if (event.target.nodeName !== "IMG") {
+        return;
+    }
+    const instance = basicLightbox.create(`
+    <div class="modal">
+        <img class = "modal-image"
+        src = ${event.target.dataset.source}
+        alt = ${event.target.alt}
+        width="1112" 
+        height="640"
+        >
+    </div>
+` )
+    instance.show();
+}
